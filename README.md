@@ -2,7 +2,7 @@
 
 A [Claude Code](https://claude.ai/code) skill that automates iOS App Store screenshot capture from end to end — booting the simulator, building your app, navigating to key screens, and capturing clean, status-bar-corrected screenshots ready for ASO.
 
-Works with both **Flutter** and **native iOS** projects. Companion skill to [`aso-appstore-screenshots`](https://github.com/akashsahu0612/claude-aso-appstore-screenshots).
+Works with both **Flutter** and **native iOS** projects.
 
 ---
 
