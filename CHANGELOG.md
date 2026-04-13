@@ -22,5 +22,4 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Clean status bar injection (9:41, full WiFi, full battery) via `xcrun simctl status_bar`
 - Screenshot quality assessment (Great / Usable / Retake ratings)
 - Memory persistence via `aso_screenshots_auto.md` for session resumption
-- Seamless handoff to `aso-appstore-screenshots` skill
 - Templates for Flutter (`flutter_screenshot_test.dart.template`), native iOS (`ios_snapshot_test.swift.template`), and fastlane (`Snapfile.template`)

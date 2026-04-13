@@ -4,7 +4,7 @@ This file provides guidance to Claude Code when working with the `claude-appstor
 
 ## What This Is
 
-A Claude Code skill that automates iOS App Store screenshot capture. It is invoked via `/claude-appstore-generate-screenshots` from within a user's iOS or Flutter app project. It complements the existing `aso-appstore-screenshots` skill by eliminating the manual simulator screenshot step.
+A Claude Code skill that automates iOS App Store screenshot capture end-to-end. It is invoked via `/claude-appstore-generate-screenshots` from within a user's iOS or Flutter app project — booting the simulator, building the app, navigating to key screens, and capturing clean, status-bar-corrected screenshots.
 
 ## Architecture
 
@@ -17,22 +17,6 @@ claude-appstore-generate-screenshots/
     ├── ios_snapshot_test.swift.template          — Native iOS XCUITest boilerplate
     └── Snapfile.template                         — fastlane snapshot configuration
 ```
-
-## How It Fits Into the Ecosystem
-
-```
-/claude-appstore-generate-screenshots
-    ↓ (phases 1-8: detect, discover, generate test, capture, assess)
-    ↓
-./aso-screenshots/  ←— captured + assessed screenshots
-    ↓
-/aso-appstore-screenshots
-    ↓ (SCREENSHOT PAIRING phase → GENERATION phase)
-    ↓
-screenshots/final/  ←— production-ready ASO screenshots
-```
-
-When invoked from WITHIN `aso-appstore-screenshots` (via Step 0), the handoff is seamless — no need to re-invoke the second skill manually.
 
 ## Phases Overview
 
@@ -113,10 +97,3 @@ last_run: 2025-03-15T14:30:00Z
 5. **One question block per phase** — phases 2, 3, 5, 6 ask exactly one focused question; all other phases are silent
 6. **Stop on failure** — no silent retries or workarounds; clear error messages with actionable guidance
 
-## Relationship to aso-appstore-screenshots
-
-The `aso-appstore-screenshots/SKILL.md` has a **Step 0** injected at the start of its SCREENSHOT PAIRING section. This Step 0 offers the user a choice:
-- **Option A (Automatic)**: Invoke `claude-appstore-generate-screenshots` phases 1-8, then seamlessly continue into SCREENSHOT PAIRING → Step 2
-- **Option B (Manual)**: Proceed with the original Step 1 (ask user for paths)
-
-The seamless handoff path avoids requiring the user to run two separate skills.

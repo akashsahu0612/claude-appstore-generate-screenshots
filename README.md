@@ -17,7 +17,7 @@ Invoke `/claude-appstore-generate-screenshots` from within your iOS or Flutter p
 5. **Generate** a test file from template, pre-filled for your app — you review before anything runs
 6. **Pre-flight check** — confirms simulator availability and build validity, then asks for your go-ahead
 7. **Execute** — boots simulator, sets clean status bar (9:41), runs automation, captures screenshots
-8. **Assess** each screenshot (Great / Usable / Retake) and hands off to `aso-appstore-screenshots`
+8. **Assess** each screenshot (Great / Usable / Retake) — screenshots are ready for App Store submission
 9. **Persist** session state to memory so you can resume exactly where you left off
 
 **Minimum questions.** Phases 0, 1, 4, 7, 8, and 9 require zero user input. You only answer three focused question blocks: confirm screens, review generated code, and give a final go/no-go.
@@ -95,17 +95,6 @@ skills/claude-appstore-generate-screenshots/
     ├── ios_snapshot_test.swift.template        — Native iOS XCUITest boilerplate
     └── Snapfile.template                       — fastlane snapshot configuration
 ```
-
----
-
-## Companion Skill: aso-appstore-screenshots
-
-Once screenshots are captured and assessed, Claude hands off to [`aso-appstore-screenshots`](https://github.com/akashsahu0612/claude-aso-appstore-screenshots) which:
-- Analyzes your app's core benefits
-- Pairs each screenshot with a headline and subheadline
-- Generates production-ready App Store screenshots with design overlays
-
-The handoff is seamless — if you invoke `aso-appstore-screenshots` first, it offers to auto-capture screenshots via this skill before continuing to generation.
 
 ---
 

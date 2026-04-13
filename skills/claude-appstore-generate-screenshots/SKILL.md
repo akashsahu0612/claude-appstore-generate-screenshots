@@ -1,6 +1,6 @@
 ---
 name: claude-appstore-generate-screenshots
-description: Automatically capture iOS App Store screenshots by booting the simulator, building the app, navigating to key screens, and taking screenshots — then handing off to aso-appstore-screenshots for generation.
+description: Automatically capture iOS App Store screenshots by booting the simulator, building the app, navigating to key screens, and taking clean, status-bar-corrected screenshots ready for App Store submission.
 user-invocable: true
 ---
 
@@ -91,7 +91,7 @@ Silently scan the current directory. Report findings at the end of this phase bu
 - `UITabBarItem` titles
 - `UIViewController` subclasses with descriptive names
 
-**Cross-reference with memory:** If `aso_benefits.md` exists in memory (benefits already confirmed from `aso-appstore-screenshots`), automatically map each benefit to the most likely matching screen.
+**Cross-reference with memory:** If previous session memory exists in `aso_screenshots_auto.md`, automatically map confirmed screens from prior runs.
 
 ### Single Question Block
 
@@ -399,16 +399,11 @@ Summary:
 ⚠️  Usable: 03-dashboard.png
 🔄 Retake: 04-profile.png
 
-Great/Usable screenshots are ready for App Store generation.
+Great/Usable screenshots are ready for App Store submission.
+Path: ./aso-screenshots/
 
-Next step: Run /aso-appstore-screenshots
-When asked for screenshots, provide the path: ./aso-screenshots/
+To retake failed screenshots, re-invoke /claude-appstore-generate-screenshots — Phase 0 will offer to re-capture only Retake-rated screens.
 ```
-
-If invoked FROM WITHIN `aso-appstore-screenshots` (Step 0 auto-capture path):
-- Do NOT tell the user to run `/aso-appstore-screenshots` — they're already in it
-- Instead, announce: "Capture complete — continuing with screenshot assessment..."
-- Proceed directly into the aso-appstore-screenshots SCREENSHOT PAIRING → Step 2 (assessment) phase
 
 ---
 
